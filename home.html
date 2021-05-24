@@ -1,0 +1,113 @@
+<!-- Copyright 2021 by developer rezwan 
+   site-> https://www.developer-rezwan.cf
+   email-> samiahmed0f0@gmail.com
+   :Don't Remove this comment:
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Javascript projects by - Developer Rezwan</title>
+   <meta property="og:type" content="article">
+		<meta property="og:title" content="Onload Hackbar">
+		<meta property="og:description" content="Welcome dear!!, you can use onload hackbar for sql injection, this is a simple version  of onload hackbar">
+		<meta property="og:image" content="img/1.jpg">
+		<meta property="og:url" content="http://hackbar.epizy.com">
+		<meta name="description" content="Hi, I am Rezwan Ahmod Sami, a web application developer.Welcome on my site.">
+
+		<meta property="og:site_name" content="Developer Rezwan">
+		<meta name="robots" content="index, follow">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+   <!-- scripts -->
+   <script src="js/jquery-3.3.1.min.js"></script>
+
+   <!-- css links -->
+   <link rel="stylesheet" href="css/bootstrap.min.css">
+   <link rel="stylesheet" href="css/materialdesignicons.min.css">
+   <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+   <nav class="navbar navbar-expand-lg navbar-dark bg-dark high-dark">
+      <a class="nav-logo navbar-brand" href="#"><img src="img/logo_hackbar.png" alt="logo" srcset=""> <h2> Onload</h2></a>
+      </nav>
+      <div class="container">
+            <form>
+               <div class="text-area-field mt-3">
+                  <textarea id="query_area" class="urltext" spellcheck="false" name="query_text" id="" cols="30" rows="5" placeholder=""></textarea>
+               </div>
+               <div class="col-sm-12">
+                  <div class="exucute-field mt-2">
+                     <div class="col-md-8  select-box">
+                        <select name="select_query" id="query" class="select_query">
+                           <option value="">Select A query</option>
+                           
+                        </select>
+                     </div>
+                     <div class="col-md-4 exucute-button">
+                        <button id="exe" class="exe mr-2">execute</button>
+                        <button type="reset">Reset</button>
+                     </div>
+                  </div>
+               </div>
+            </form>
+         <div class="iframe-field mt-2">
+            <p>Result: </p>
+            <iframe id="result" src="" frameborder="0"></iframe>
+            <span id="init-text"></span>
+         </div>
+      </div>
+      <script>
+var i = 0;
+var txt = ">>> System is ready now....";
+var speed = 90;
+
+         function typeWriter() {
+  if (i < txt.length) {
+     var t = $("#query_area").attr("placeholder");
+    $("#query_area").attr("placeholder", t += txt.charAt(i));
+    i++;
+    setTimeout(typeWriter, speed);
+  }
+}
+   $(document).ready(function () {
+      typeWriter()
+      $(".logo").click(function () { 
+         audio = new Audio('audio/a1.mp3');
+            audio.play();
+      });
+      async function api() {
+   const jsondata = await fetch("query.json");
+
+   const jsdata = await jsondata.json();
+   for (let i = 0; i < jsdata.length; i++) {
+      
+      $("#query").append(`<option value="${jsdata[i].query}">${jsdata[i].query}</option>`);
+      
+   }
+   }
+ api();
+   });
+$("form").on("submit", function (e) {
+   e.preventDefault();
+})
+   $("#exe").click(function () {
+      var textarea = document.querySelector(".urltext");
+      var urltext = document.querySelector(".urltext").value;
+      var selectquery = document.querySelector(".select_query").value;
+      var inittext = document.getElementById("init-text");
+
+         if (urltext.length  != 0) {
+         var concatvalue = urltext +' '+selectquery;
+         inittext.innerHTML = '';
+         $("#result").attr("src", concatvalue);
+         $(".urltext").val(concatvalue);
+
+      }else{
+         inittext.innerHTML = '<b style="color:red;">Error!! Enter Url first with parameter.....</b>';
+      }
+
+   });
+      </script>
+</body>
+</html>

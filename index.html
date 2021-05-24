@@ -1,0 +1,97 @@
+<!-- Copyright 2021 by developer rezwan 
+   site-> https://www.developer-rezwan.cf
+   email-> samiahmed0f0@gmail.com
+   :Don't Remove this comment:
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Onload Hackbar - by Developer Rezwan</title>
+   <meta property="og:type" content="article">
+		<meta property="og:title" content="Onload Hackbar">
+		<meta property="og:description" content="Welcome dear!!, you can use onload hackbar for sql injection, this is a simple version  of onload hackbar">
+		<meta property="og:image" content="img/1.jpg">
+		<meta property="og:url" content="http://hackbar.epizy.com">
+		<meta name="description" content="Hi, I am Rezwan Ahmod Sami, a web application developer.Welcome on my site.">
+
+		<meta property="og:site_name" content="Developer Rezwan">
+		<meta name="robots" content="index, follow">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+   <!-- scripts -->
+   <script src="js/jquery-3.3.1.min.js"></script>
+
+   <!-- css links -->
+   <link rel="stylesheet" href="css/bootstrap.min.css">
+   <link rel="stylesheet" href="css/materialdesignicons.min.css">
+   <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+   <div class="container mt-5">
+      <div id="stop" class="stop-button">
+         <span class="mdi mdi-music-note-off"></span>
+      </div>
+      <div class="logo" play="false">
+         <img src="img/logo_hackbar.png" alt="logo">
+      </div>
+      <div class="home_title">
+         <h2>Onload Hackbar</h2>
+      </div>
+      <div class="main">
+         <div class="instruction">
+            <p id="text"></p>
+            <div class="button">
+               <button id="start">start</button>
+            </div>
+         </div>
+      </div>
+      <div class="footer mt-3">
+         <h4>Created By</h4>
+         <a href="https://www.developer-rezwan.cf">Developer rezwan</a>
+         <span>v1.0.0</span>
+      </div>
+   </div>
+   <!-- <iframe id="load" src="" frameborder="0" width="1400px" height="600px"></iframe> -->
+      <script>
+var i = 0;
+var txt = "Hey Dear! I am your 0 0 0 0 0 === Developer Rezwan is here :).Note That this hackbar is only for educational purpose, you can use it free.But Don't harm people websites.You can use this browser based tool for basic sql injection :).Enjoy it :)";
+var speed = 90;
+let timer;
+function typeWriter() {
+  if (i < txt.length) {
+    document.getElementById("text").innerHTML += txt.charAt(i);
+    i++;
+    setTimeout(typeWriter, speed);
+    
+  }else{
+   document.getElementById("start").style.display = 'block';
+   $("#start").on("click", function () {
+      window.location = "home.html"; 
+   });
+  }
+}
+$(document).ready(function () {
+   typeWriter();
+   const music = new Audio('audio/a1.mp3');
+   var data = $(".logo").attr("play");
+   // music.play();
+   music.loop =true;
+   $(".logo").click(function () { 
+      music.play();
+      $(".logo").attr("play", "true");
+      $(".logo img").css('border', "5px solid chartreuse");
+      $("#stop").css("display", "block");
+});
+
+$("#stop").click(function () { 
+   music.pause();
+   $("#stop").css("display", "none");
+   $(".logo img").css('border', "0");
+ });
+});
+
+      </script>
+</body>
+</html>
